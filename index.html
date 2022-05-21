@@ -20,20 +20,20 @@
 	<meta name="Author" content="nps.im">
 
 	<meta property="og:title" content="nps.im">
-	<meta property="og:image" content="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/image/og.jpg">
-	<meta property="og:url" content="https://www.newsaas.cn/">
+	<meta property="og:image" content="static/image/og.jpg">
+	<meta property="og:url" content="https://1000.run/">
 	<meta property="og:site_name" content="nps.im">
 	<meta property="og:description" content="免费的内网穿透服务，轻松在家电脑搭建网站">
 
 	<meta name="twitter:title" content="nps.im">
-	<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/image/og.jpg">
-	<meta name="twitter:url" content="https://www.newsaas.cn/">
+	<meta name="twitter:image" content="static/image/og.jpg">
+	<meta name="twitter:url" content="https://1000.run/">
 	<meta name="twitter:card" content="nps.im">
 
 	<link rel="shortcut icon" href="/favicon.ico?v=2">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/css/index.css">
-	<script src="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/js/dat.gui.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="static/css/index.css">
+	<script src="static/js/dat.gui.min.js"></script>
+	<script src="static/js/index.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <html>
 
@@ -56,7 +56,7 @@
 		</div>
 		<a class="float-down" href="#intro">&#xe649;</a>
 	</section>
-	<section class="board board-intro" style="--bg: url(https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/images/bg2.jpg)">
+	<section class="board board-intro" style="--bg: url(static/images/bg2.jpg)">
 		<a onclick="document.documentElement.scrollTop=window.innerHeight" id="intro" href="#intro" class="title-bar">
 			<div class="bg"></div>
 			<span>&#xe617; 介绍</span>
@@ -68,12 +68,12 @@
 		</div>
 		<div class="right-pic">
 			<video id="demovideo" muted="muted" class="video" onclick="this.play()" onplay="this.playbackRate=0.8">
-				<source src="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/demo.mp4" type="video/mp4">
+				<source src="static/demo.mp4" type="video/mp4">
 			</video>
 		</div>
 		<a class="float-down" href="#price">&#xe649;</a>
 	</section>	
-	<section class="board board-price" style="--bg: url(https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/images/bg3.jpg)">
+	<section class="board board-price" style="--bg: url(static/images/bg3.jpg)">
 		<a onclick="document.documentElement.scrollTop=window.innerHeight*2" href="#price" id="price" class="title-bar">
 			<div class="bg"></div>
 			<span>&#xe60e; 定价</span>
@@ -133,14 +133,14 @@
 
 		<div class="bg" id="about-bg"></div>
 		<div class="left-text">
-			<div class="middletext">nps.im 由 <br id="mobile-br"><a href="https://blog.1000g.cc/starts.html">1000g.cc</a> 运营</div>
+			<div class="middletext">nps.im 由 <br id="mobile-br"><a href="http://1000.run">1000.run</a> 运营</div>
 			在本站注册即意味着您同意我们的
 			<a style="text-decoration: underline" href="/policy/">服务条款</a>
 			和
 			<a style="text-decoration: underline" href="/policy/privacy">隐私策略</a>
 			<br>
 			<br>
-			<span id="comname">梧州新云网络科技有限责任公司</span> · <a href="https://beian.miit.gov.cn/">桂ICP备 2020007365号</a>
+			<span id="comname">码农工作室</span> · <a href="https://beian.miit.gov.cn/">桂ICP备2022003503号</a>
 
 			<div style="margin-top: 40px" class="actions">
 				<a href="https://openai.weixin.qq.com/webapp/lEEkDwSGGj8byyOqyyUrKuP9p57Ykk?robotName=%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D" class="btn">联系我们</a>
@@ -181,52 +181,78 @@
 	});
 	joinusEl = document.querySelector("#joinusbtn");
 	joinusEl.addEventListener("mousedown", function (e) {
-		window.open("https://www.newsaas.cn");
+		window.open("https://1000.run");
 	});
 </script>
 <!--禁止审查代码start-->
-<script type="text/javascript">
-		//判断F12审查元素
-function fuckyou() {
-	window.close(); //关闭当前窗口(防抽)
-	window.location = "about:blank"; //将当前窗口跳转置空白页
-}
+<script>
+// 返回桌面的时候显示
+((function() {
+		var callbacks = [],
+			timeLimit = 50,
+			open = false;
+		setInterval(loop, 1);
+		return {
+			addListener: function(fn) {
+				callbacks.push(fn);
+			},
+			cancleListenr: function(fn) {
+				callbacks = callbacks.filter(function(v) {
+					return v !== fn;
+				});
+			}
+		}
 
-function ck() {
-	console.profile();
-	console.profileEnd();
-	//我们判断一下profiles里面有没有东西，如果有，肯定有人按F12了，没错！！
-	if(console.clear) {
-		console.clear()
-	};
-	if(typeof console.profiles == "object") {
-		return console.profiles.length > 0;
-	}
-}
+		function loop() {
+			var startTime = new Date();
+			debugger;
+			if (new Date() - startTime > timeLimit) {
+				if (!open) {
+					callbacks.forEach(function(fn) {
+						fn.call(null);
+					});
+				}
+				open = true;
+				window.stop();
+				alert('温馨提醒：\n小样！还想扒我的站？\n自己老实一点！');
+				document.body.innerHTML = "";
+			} else {
+				open = false;
+			}
+		}
+	})()).addListener(function() {
+		window.location.reload();
+	});
 
-function hehe() {
-	if((window.console && (console.firebug || console.table && /firebug/i.test(console.table()))) || (typeof opera == 'object' && typeof opera.postError == 'function' && console.profile.length > 0)) {
-		fuckyou();
+// js键盘监听事件-监听键盘F12(123)-触发文件为空
+$(document).keydown(function(event) {
+	if (event.keyCode == 123) {
+		alert('温馨提醒：\n小伙子！你想干嘛？又想扒我站？');
+		document.body.innerHTML = "";
 	}
-	if(typeof console.profiles == "object" && console.profiles.length > 0) {
-		fuckyou();
-	}
-}
-hehe();
-window.onresize = function() {
-	if((window.outerHeight - window.innerHeight) > 200)
-		//判断当前窗口内页高度和窗口高度，如果差值大于200，那么呵呵
-		fuckyou();
-}
+});
+
+//显示版权
+console.log("\n %c 52.js.cn %c https://52.jx.cn/ \n\n",
+			"color: #fadfa3; background: #2f55d4; padding:5px 0;", "background: #fadfa3; padding: 5px 0;")
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5924ffa9fbcfc9e7df5745c775353c1f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 <!--禁止审查代码end-->
-<!--客服 开始-->
-<script src="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/kefu/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/kefu/kefu.css" type="text/css" media="screen" charset="utf-8">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/kefu/kefu.js"></script>
-<!-- 客服 结束 -->
+  <!-- 客服 开始 -->
+  <link rel="stylesheet" href="https://img.newsaas.cn/newsaas.cn/assets/kefu/kefu.css" type="text/css" media="screen" charset="utf-8">
+<script type="text/javascript" src="https://img.newsaas.cn/newsaas.cn/assets/kefu/kefu.js"></script>
+  <!-- 客服 结束 -->
 <audio autoplay="autoplay"><source src="http://music.163.com/song/media/outer/url?id=487587201.mp3" type="audio/mpeg"></audio>
-<!-- <audio autoplay="autoplay"><source src="https://cdn.jsdelivr.net/gh/52gx/nps.im@master/static/bg.mp3" type="audio/mpeg"></audio> -->
+<!-- <audio autoplay="autoplay"><source src="static/bg.mp3" type="audio/mpeg"></audio> -->
 <script>
 !function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JOrwpdHrWv1k2sjL",ck:"JOrwpdHrWv1k2sjL"});
 </script>
